@@ -39,8 +39,15 @@
   }
 
   const hasGSAP=!!(window.gsap&&window.ScrollTrigger);
+  let lenis=null;
   if(hasGSAP && !reduce){
     gsap.registerPlugin(ScrollTrigger);
+    if(window.Lenis){
+      lenis=new Lenis({duration:1.18,smoothWheel:true,wheelMultiplier:.92,touchMultiplier:1.05,anchors:true});
+      lenis.on('scroll',ScrollTrigger.update);
+      gsap.ticker.add(time=>lenis.raf(time*1000));
+      gsap.ticker.lagSmoothing(0);
+    }
     gsap.from('.hero-copy>*',{y:34,opacity:0,duration:.9,stagger:.09,ease:'power3.out',delay:.08});
     gsap.from('.character-wrap',{x:70,opacity:0,rotateY:-8,duration:1.1,ease:'power3.out',delay:.12});
     gsap.from('.hero-meta',{y:22,opacity:0,duration:.8,ease:'power3.out',delay:.55});
@@ -64,7 +71,7 @@
     ScrollTrigger.create({trigger:'.work-story',start:'top top',end:'bottom bottom',scrub:.5,onUpdate:self=>{
       const p=self.progress; progress.style.width=(p*100)+'%'; const idx=Math.min(4,Math.floor(p*5)); if(idx!==active)showPanel(idx,idx>active?1:-1);
     }});
-    dots.forEach((d,i)=>d.addEventListener('click',()=>{const el=q('.work-story');const y=el.offsetTop+(el.offsetHeight-innerHeight)*(i/4);scrollTo({top:y,behavior:'smooth'})}));
+    dots.forEach((d,i)=>d.addEventListener('click',()=>{const el=q('.work-story');const y=el.offsetTop+(el.offsetHeight-innerHeight)*(i/4);if(lenis)lenis.scrollTo(y,{duration:1.1});else scrollTo({top:y,behavior:'smooth'})}));
     gsap.from('.work-heading',{x:-60,opacity:0,scrollTrigger:{trigger:'.work-story',start:'top 72%',end:'top 35%',scrub:.6}});
 
     gsap.from('.about-copy h2 span',{x:-90,opacity:0,scrollTrigger:{trigger:'.about',start:'top 70%',end:'top 35%',scrub:.55}});
