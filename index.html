@@ -4,177 +4,131 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Sohaim Muqtada — application security, offensive security, AI governance, and security engineering." />
-  <meta name="theme-color" content="#f4f1e9" />
+  <meta name="theme-color" content="#f3efe5" />
   <title>Sohaim Muqtada — Cybersecurity</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 4 52 11v16c0 14-8.7 25-20 33C20.7 52 12 41 12 27V11z' fill='%23f4f1e9' stroke='%230f4a39' stroke-width='4'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='serif' font-size='28' fill='%230f4a39'%3ES%3C/text%3E%3C/svg%3E" />
-  <link rel="preload" href="assets/sohaim-portrait.webp" as="image" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="preload" href="assets/portrait-480.webp" as="image" type="image/webp" />
+  <link rel="stylesheet" href="styles-v2.css" />
 </head>
 <body>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="cursor-dot" aria-hidden="true"></div>
+  <canvas id="world" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span></span></div>
 
-  <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Sohaim Muqtada home">
-      <span class="brand-mark" aria-hidden="true">S</span>
-      <span class="brand-copy">
-        <strong>Sohaim Muqtada</strong>
-        <small>Cybersecurity</small>
-      </span>
+  <header class="topbar" id="top">
+    <a class="brand" href="#top" aria-label="Home">
+      <span class="brand-shield">S</span>
+      <span><strong>Sohaim Muqtada</strong><small>Cybersecurity Engineer</small></span>
     </a>
-
-    <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span>
-    </button>
-
-    <nav class="nav" aria-label="Primary navigation">
+    <nav class="nav" aria-label="Primary">
+      <a href="#work">Work</a>
       <a href="#about">About</a>
-      <a href="#work">Projects</a>
-      <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
-
-    <a class="header-cta magnetic" href="mailto:sohaimmuqtada786@gmail.com">
-      Connect <span aria-hidden="true">↗</span>
-    </a>
+    <a class="mini-cta magnetic" href="mailto:sohaimmuqtada786@gmail.com">Connect <span>↗</span></a>
+    <button class="menu" type="button" aria-label="Open navigation" aria-expanded="false"><i></i><i></i></button>
   </header>
 
   <main>
-    <section class="hero section-shell" aria-labelledby="hero-title">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">Secure by design. Curious by default.</p>
-        <h1 id="hero-title">Cyber systems,<br><em>built with intent.</em></h1>
-        <p class="hero-lede">I build, test, and harden systems where security matters — from application logic to AI governance.</p>
+    <section class="hero shell" id="home" aria-labelledby="heroTitle">
+      <div class="hero-copy intro-reveal">
+        <p class="kicker">Secure by design. Curious by default.</p>
+        <h1 id="heroTitle"><span>Cyber systems,</span><em>built with intent.</em></h1>
+        <p class="lede">I build, test, and harden systems where security matters — from application logic to AI governance.</p>
         <div class="hero-actions">
-          <a class="button button-primary magnetic" href="#work">View projects <span>↗</span></a>
-          <a class="button button-secondary magnetic" href="#contact">Get in touch <span>↗</span></a>
+          <a class="btn primary magnetic" href="#work">View work <span>↗</span></a>
+          <a class="btn ghost magnetic" href="#contact">Get in touch <span>↗</span></a>
         </div>
       </div>
 
-      <div class="hero-visual reveal" data-delay="120">
-        <div class="portrait-stage" id="portraitStage">
-          <div class="portrait-rings" aria-hidden="true"></div>
-          <img class="portrait portrait-base" src="assets/sohaim-portrait.webp" alt="Portrait of Sohaim Muqtada" />
-          <div class="portrait-cyber" id="portraitCyber" aria-hidden="true">
-            <img src="assets/sohaim-portrait.webp" alt="" />
-            <div class="scan-grid"></div>
-            <div class="code-rain">
-              <span>scope.validate()</span><span>evidence.verify()</span><span>authz.boundary()</span><span>risk.assess()</span><span>system.harden()</span>
+      <div class="hero-character intro-reveal" data-delay="100">
+        <div class="character-rig" id="characterRig">
+          <div class="orbit orbit-a"></div>
+          <div class="orbit orbit-b"></div>
+          <div class="portrait-frame" id="portraitFrame">
+            <div class="digital-portrait" aria-hidden="true">
+              <img src="assets/portrait-480.webp" alt="" />
+              <span class="scan"></span>
+              <span class="matrix matrix-a">authz.boundary()<br>evidence.verify()<br>scope.enforce()</span>
+              <span class="matrix matrix-b">0x53 0x45 0x43<br>risk.assess()<br>system.harden()</span>
             </div>
+            <div class="real-portrait" id="realPortrait">
+              <img src="assets/portrait-480.webp" alt="Portrait of Sohaim Muqtada" />
+            </div>
+            <div class="scanner-ring" id="scannerRing" aria-hidden="true"></div>
           </div>
-          <div class="reveal-line" id="revealLine" aria-hidden="true"></div>
-          <div class="portrait-note">
-            <span class="status-dot"></span>
-            <div><small>Current focus</small><strong>Application security · AI governance</strong></div>
+          <p class="reveal-hint"><span></span> Move to reveal</p>
+          <div class="hero-status"><small>Current focus</small><strong>Application Security · AI Governance</strong></div>
+        </div>
+      </div>
+
+      <div class="role-rail intro-reveal" data-delay="160" aria-label="Capabilities">
+        <span>Application Security</span><span>Offensive Security</span><span>Security Engineering</span><span>AI Governance</span>
+      </div>
+      <a class="scroll-cue" href="#work" aria-label="Scroll to work"><span>Scroll</span><i></i></a>
+    </section>
+
+    <section class="work shell" id="work" aria-labelledby="workTitle">
+      <div class="section-head reveal">
+        <p class="kicker">Selected work</p>
+        <h2 id="workTitle">Built to answer real questions.</h2>
+        <p>Five projects. Different problems. Same standard: evidence before claims.</p>
+      </div>
+
+      <div class="work-stage">
+        <div class="project-visual reveal" aria-hidden="true">
+          <div class="visual-core" id="visualCore">
+            <span class="visual-index" id="visualIndex">01</span>
+            <span class="visual-symbol" id="visualSymbol">A</span>
+            <div class="visual-rings"><i></i><i></i><i></i></div>
           </div>
         </div>
-      </div>
-
-      <div class="capability-strip reveal" data-delay="180" aria-label="Core capabilities">
-        <article><span class="cap-icon">⌁</span><div><strong>Application Security</strong><small>Web, API, logic and access control.</small></div></article>
-        <article><span class="cap-icon">◎</span><div><strong>Offensive Security</strong><small>Evidence-led testing and validation.</small></div></article>
-        <article><span class="cap-icon">◇</span><div><strong>Security Engineering</strong><small>Systems designed to withstand failure.</small></div></article>
-        <article><span class="cap-icon">△</span><div><strong>AI Governance</strong><small>Adoption with control, privacy and purpose.</small></div></article>
+        <div class="project-list">
+          <a class="project-row reveal active" href="https://aegis-mint.vercel.app" target="_blank" rel="noreferrer" data-index="01" data-symbol="A">
+            <span class="num">01</span><div><h3>AegisMint</h3><p>Security-first ERC-721 marketplace with IPFS, escrow and on-chain provenance.</p></div><span class="arrow">↗</span>
+          </a>
+          <a class="project-row reveal" href="https://jaiza-chi.vercel.app" target="_blank" rel="noreferrer" data-index="02" data-symbol="J">
+            <span class="num">02</span><div><h3>Jaiza</h3><p>AI adoption and governance focused on cost, privacy and operational control.</p></div><span class="arrow">↗</span>
+          </a>
+          <a class="project-row reveal" href="https://github.com/muhammadsohaimmuqtada/aultline" target="_blank" rel="noreferrer" data-index="03" data-symbol="⌖">
+            <span class="num">03</span><div><h3>Aultline</h3><p>Evidence-driven application-security analysis for authorization and business logic.</p></div><span class="arrow">↗</span>
+          </a>
+          <a class="project-row reveal" href="https://github.com/muhammadsohaimmuqtada/logic-lab-security" target="_blank" rel="noreferrer" data-index="04" data-symbol="⚗">
+            <span class="num">04</span><div><h3>Logic Lab</h3><p>Local-first training platform for web business-logic vulnerabilities.</p></div><span class="arrow">↗</span>
+          </a>
+          <a class="project-row reveal" href="https://github.com/muhammadsohaimmuqtada/CryptoHawk" target="_blank" rel="noreferrer" data-index="05" data-symbol="◈">
+            <span class="num">05</span><div><h3>CryptoHawk</h3><p>Cryptographic exposure management and post-quantum readiness platform.</p></div><span class="arrow">↗</span>
+          </a>
+        </div>
       </div>
     </section>
 
-    <section class="projects section-shell" id="work" aria-labelledby="work-title">
-      <div class="section-heading reveal">
-        <div>
-          <p class="eyebrow">Selected work</p>
-          <h2 id="work-title">Projects with a point.</h2>
+    <section class="manifesto shell reveal" id="about">
+      <div class="manifesto-line"><span>Think</span><strong>like an attacker.</strong></div>
+      <div class="manifesto-line"><span>Build</span><strong>like a defender.</strong></div>
+      <div class="manifesto-meta">
+        <p>I’m a cybersecurity student and builder focused on application security, offensive security, security tooling and pragmatic AI governance.</p>
+        <div class="roles">
+          <span><small>Current</small>Dafi Labs × EmpRadar.ai</span>
+          <span><small>Leadership</small>UMT CyberSecurity Society</span>
+          <span><small>Building</small>Jaiza</span>
         </div>
-        <a href="https://github.com/muhammadsohaimmuqtada" target="_blank" rel="noreferrer">All repositories ↗</a>
-      </div>
-
-      <div class="project-grid">
-        <a class="project-card featured reveal" href="https://aegis-mint.vercel.app" target="_blank" rel="noreferrer">
-          <div class="project-top"><span class="project-index">01</span><span class="project-arrow">↗</span></div>
-          <div class="project-mark shield">A</div>
-          <h3>AegisMint</h3>
-          <p>Security-first ERC-721 marketplace with IPFS assets, verified Sepolia contracts, escrow, resale, and on-chain provenance.</p>
-          <div class="tags"><span>Solidity</span><span>Next.js</span><span>IPFS</span></div>
-        </a>
-
-        <a class="project-card reveal" data-delay="60" href="https://jaiza-chi.vercel.app" target="_blank" rel="noreferrer">
-          <div class="project-top"><span class="project-index">02</span><span class="project-arrow">↗</span></div>
-          <div class="project-mark">J</div>
-          <h3>Jaiza</h3>
-          <p>AI adoption, optimization, and governance focused on cost, data control, and operational risk.</p>
-          <div class="tags"><span>AI Governance</span><span>Privacy</span></div>
-        </a>
-
-        <a class="project-card reveal" data-delay="100" href="https://github.com/muhammadsohaimmuqtada/aultline" target="_blank" rel="noreferrer">
-          <div class="project-top"><span class="project-index">03</span><span class="project-arrow">↗</span></div>
-          <div class="project-mark">⌖</div>
-          <h3>Aultline</h3>
-          <p>Evidence-driven application security analysis for authorization, identity, APIs, and business-logic validation.</p>
-          <div class="tags"><span>AppSec</span><span>Python</span><span>Evidence</span></div>
-        </a>
-
-        <a class="project-card reveal" data-delay="140" href="https://github.com/muhammadsohaimmuqtada/logic-lab-security" target="_blank" rel="noreferrer">
-          <div class="project-top"><span class="project-index">04</span><span class="project-arrow">↗</span></div>
-          <div class="project-mark">⚗</div>
-          <h3>Logic Lab</h3>
-          <p>Local-first training platform for learning multi-tenant authorization, workflow, economic, and API logic failures.</p>
-          <div class="tags"><span>Flask</span><span>Web Security</span><span>Labs</span></div>
-        </a>
-
-        <a class="project-card reveal" data-delay="180" href="https://github.com/muhammadsohaimmuqtada/CryptoHawk" target="_blank" rel="noreferrer">
-          <div class="project-top"><span class="project-index">05</span><span class="project-arrow">↗</span></div>
-          <div class="project-mark">◈</div>
-          <h3>CryptoHawk</h3>
-          <p>Cryptographic exposure management and post-quantum readiness with evidence-backed discovery and CBOM export.</p>
-          <div class="tags"><span>PQC</span><span>Crypto</span><span>CBOM</span></div>
-        </a>
       </div>
     </section>
 
-    <section class="profile-grid section-shell" id="about" aria-label="About and experience">
-      <article class="about-panel reveal">
-        <div class="section-number">A</div>
-        <p class="eyebrow">About</p>
-        <h2>Security work should survive contact with reality.</h2>
-        <p>I’m a cybersecurity student and builder focused on application security, offensive security, security tooling, and pragmatic AI governance.</p>
-        <div class="about-links">
-          <a href="https://github.com/muhammadsohaimmuqtada" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <a href="#contact">Contact ↘</a>
-        </div>
-      </article>
-
-      <article class="experience-panel reveal" data-delay="100" id="experience">
-        <div class="section-number">E</div>
-        <p class="eyebrow">Current roles</p>
-        <div class="experience-list">
-          <div><span>Blockchain Development Internship</span><strong>Dafi Labs × EmpRadar.ai</strong></div>
-          <div><span>Technical Team Director</span><strong>UMT CyberSecurity Society</strong></div>
-          <div><span>Founder & Lead Developer</span><strong>Jaiza</strong></div>
-        </div>
-      </article>
-    </section>
-
-    <section class="contact section-shell reveal" id="contact" aria-labelledby="contact-title">
+    <section class="contact shell reveal" id="contact">
       <div>
-        <p class="eyebrow">Contact</p>
-        <h2 id="contact-title">Let’s build something worth securing.</h2>
-        <p>Open to serious security work, research collaborations, and technically interesting problems.</p>
+        <p class="kicker">Contact</p>
+        <h2>Let’s build something<br><em>worth securing.</em></h2>
       </div>
-      <div class="contact-actions">
-        <a class="button button-primary magnetic" href="mailto:sohaimmuqtada786@gmail.com">Start a conversation <span>↗</span></a>
-        <div class="social-links">
-          <a href="https://github.com/muhammadsohaimmuqtada" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <a href="mailto:sohaimmuqtada786@gmail.com">Email ↗</a>
-        </div>
+      <div class="contact-side">
+        <p>Open to serious security work, research collaborations and technically interesting problems.</p>
+        <a class="btn primary magnetic" href="mailto:sohaimmuqtada786@gmail.com">Start a conversation <span>↗</span></a>
+        <div class="links"><a href="https://github.com/muhammadsohaimmuqtada" target="_blank" rel="noreferrer">GitHub ↗</a><a href="mailto:sohaimmuqtada786@gmail.com">Email ↗</a></div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer section-shell">
-    <span>© <span id="year"></span> Sohaim Muqtada</span>
-    <span>Built with restraint.</span>
-    <a href="#top">Back to top ↑</a>
-  </footer>
-
-  <script src="script.js" defer></script>
+  <footer class="footer shell"><span>© <b id="year"></b> Sohaim Muqtada</span><span>Security · Engineering · Research</span><a href="#top">Top ↑</a></footer>
+  <script src="script-v2.js" defer></script>
 </body>
 </html>
